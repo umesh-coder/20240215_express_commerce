@@ -27,13 +27,15 @@ const orders = require("./database/orders.json");
 //middleware
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.json())
+
 //Routes
 
 //Routes to print products
 
-// app.get("/products", (req, res) => {
-//   return res.json(products);
-// });
+app.get("/product", (req, res) => {
+  return res.json(products);
+});
 
 app.get("/products", (req, res) => {
   const html = `
@@ -50,10 +52,13 @@ app.get("/products", (req, res) => {
       <tr><th>product-id</th><th>Name</th><th>Price</th><th>Rating</th><th>Thumbnail</th><th>Description</th></tr>
       ${products
         .map(
-          (product) => `<tr><td>${product.id}</td><td>${product.title}</td><td>${product.price}</td><td>${product.rating}</td>
+          (
+            product
+          ) => `<tr><td>${product.id}</td><td>${product.title}</td><td>${product.price}</td><td>${product.rating}</td>
           <td><img src='${product.thumbnail}'></img></td><td>${product.description}</td>
           </tr>`
-        ).join("")}
+        )
+        .join("")}
   </table>
   `;
   res.send(html);
@@ -61,7 +66,7 @@ app.get("/products", (req, res) => {
 
 /**
  * Search BY Id
- * 
+ *
  */
 
 // app.get("/products/:id", (req, res) => {
@@ -85,18 +90,16 @@ app.get("/products", (req, res) => {
 
 /**
  * Search BY Name
- * 
+ *
  */
-app
-  .get("/products/search/:title", (req, res) => {
-    // Retrieve the id from params and convert it to a number
-    const title = req.params.title;
+app.get("/products/search/:title", (req, res) => {
+  // Retrieve the id from params and convert it to a number
+  const title = req.params.title;
 
-    // Find the product by name
-    const product = products.find((product) => product.title === title); //varname.id alwyas
+  // Find the product by name
+  const product = products.find((product) => product.title === title); //varname.id alwyas
 
-
-    const html = `
+  const html = `
 
   <h1><center><b>Products</b></center></h1>
 
@@ -114,19 +117,18 @@ app
       </tr>
   </table>
   `;
-  
 
-    // Check if product exists
-    if (!product) {
-      // If product not found, return 404 status
-      return res.status(404).json({ error: "Product not found" });
-    }
+  // Check if product exists
+  if (!product) {
+    // If product not found, return 404 status
+    return res.status(404).json({ error: "Product not found" });
+  }
 
-    // If product found, return it
-    return res.send(html);
-    return res.json(product);
-  })
-  
+  // If product found, return it
+  // return res.send(html);
+  return res.json(product);
+});
+
 //search Done
 
 //Insert A product
@@ -149,10 +151,10 @@ app.post("/products", (req, res) => {
     "./database/products.json",
     JSON.stringify(products),
     (err, data) => {
-      return res.json({ status: "Post Sucesss ", id: products.length });
+      return res.json({ status: "Product added Sucessfult", id: products.length });
     }
   );
-  return res.json({ status: "Post Sucesss ", id: products.length });
+  return res.json({ status: "Product added Sucessfult", id: products.length });
 });
 
 app.listen(PORT, () => {
@@ -205,7 +207,7 @@ app
         if (err) {
           return res.status(500).json({ error: "Internal server error" });
         }
-        return res.json({ status: "Product deleted successfully" });
+        return res.json({ status: "Product deleted successfully" , id:id});
       }
     );
   });
@@ -260,20 +262,76 @@ app.put("/orders/update/:id", (req, res) => {
 
 //create Order
 
-app.post("/orders/create", (req, res) => {
+app.post("/orders", (req, res) => {
   const body = req.body;
   console.log("body:-", body);
+  body.id = Math.floor(Math.random() * 9000000000) + 1000000000;
+  
+  body.date = new Date().toLocaleString();
 
-  orders.push({ ...body, id: orders.length + 1 });
+  const productId = parseInt(body.productId);
+
+
+
+  //Searching th id
+  const index = products.findIndex(
+    (product) => product.id === parseInt(productId)
+  );
+
+  if (index === -1) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  console.log("product id : " + index);
+
+  //current Stock Update
+
+  const currentStock = products[index].stock - parseInt(body.quantity);
+  
+
+  products[index] = { ...products[index], stock: currentStock };
+
+  console.log("Current stock is :- ", currentStock);
+
+  fs.writeFileSync(
+    "./database/products.json",
+    JSON.stringify(products),
+    (err, data) => {
+      if (err) {
+        return res.status(500).json({ error: "Internal server error" });
+      }
+
+      return res.json({
+        status: "Product Stock updated successfully",
+        prduct: products[index],
+      });
+    }
+  );
+
+  console.log("\n\n Product Stock updated successfully Stock : " + products[index].stock + "\n\n")
+
+//total cost
+
+body.totalcost = products[index].price * parseInt(body.quantity);
+
+console.log("\n\n total cost : "+ body.totalcost+ "\n\n");
+
+orders.push(body);  
+
 
   fs.writeFileSync(
     "./database/orders.json",
     JSON.stringify(orders),
     (err, data) => {
-      return res.json({ status: "Post Sucesss ", id: orders.length });
+      console.log("data : " + data);
     }
   );
-  return res.json({ status: "Post Sucesss ", id: orders.length });
+  return res.json({
+    status: "Order sucessfully placed",
+    id: Math.floor(Math.random() * 9000000000) + 1000000000,
+  });
+
+
 });
 
 //delete Order
@@ -300,6 +358,6 @@ app.delete("/orders/delete/:id", (req, res) => {
 
 //display orders
 
-app.post("/orders", (req, res) => {
+app.post("/order", (req, res) => {
   return res.json(orders);
 });

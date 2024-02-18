@@ -1,0 +1,179 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Express_Ecommerce",
+    "dateExported": "2024-02-18T19:35:49.702Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "80c763ae-02be-4732-98b2-2331b5fca091",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "get all products",
+            "url": "http://localhost:8000/product",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-18T19:13:00.550Z",
+            "modified": "2024-02-18T19:13:00.550Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3d1f2f2f-e430-447b-8f79-3d43fb5a81bd",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "search product by name",
+            "url": "http://localhost:8000/products/search/ball",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-18T19:15:33.215Z",
+            "modified": "2024-02-18T19:15:33.215Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "eeacfab5-5a57-4dbe-8631-fa55ead7db6a",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "add product",
+            "url": "http://localhost:8000/products/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-18T19:20:34.237Z",
+            "modified": "2024-02-18T19:20:34.237Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"iPhone 9\",\r\n    \"description\": \"An apple mobile which is nothing like apple\",\r\n    \"price\": 549,\r\n    \"discountPercentage\": 12.96,\r\n    \"rating\": 4.69,\r\n    \"stock\": 94,\r\n    \"brand\": \"Apple\",\r\n    \"category\": \"smartphones\",\r\n    \"thumbnail\": \"https://cdn.dummyjson.com/product-images/1/thumbnail.jpg\",\r\n    \"images\": []\r\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b5a879d5-19b4-48d3-9ae8-836c192c5c31",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "update product",
+            "url": "http://localhost:8000/products/32",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-18T19:22:04.221Z",
+            "modified": "2024-02-18T19:22:04.221Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"iPhone 11\",\r\n    \"description\": \"An apple mobile which is nothing like apple\",\r\n    \"price\": 5490,\r\n    \"discountPercentage\": 12.96,\r\n    \"rating\": 4.69,\r\n    \"stock\": 94,\r\n    \"brand\": \"Apple\",\r\n    \"category\": \"smartphones\",\r\n    \"thumbnail\": \"https://cdn.dummyjson.com/product-images/1/thumbnail.jpg\",\r\n    \"images\": []\r\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c782b14c-7239-47d2-a4be-fe88289ca9e4",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "delete product",
+            "url": "http://localhost:8000/products/31",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-18T19:24:34.426Z",
+            "modified": "2024-02-18T19:24:34.426Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"iPhone 11\",\r\n    \"description\": \"An apple mobile which is nothing like apple\",\r\n    \"price\": 5490,\r\n    \"discountPercentage\": 12.96,\r\n    \"rating\": 4.69,\r\n    \"stock\": 94,\r\n    \"brand\": \"Apple\",\r\n    \"category\": \"smartphones\",\r\n    \"thumbnail\": \"https://cdn.dummyjson.com/product-images/1/thumbnail.jpg\",\r\n    \"images\": []\r\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "404a198f-fd09-4bc3-beec-d2ef19c08a9e",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "search order by id",
+            "url": "http://localhost:8000/orders/25",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-02-18T19:25:49.742Z",
+            "modified": "2024-02-18T19:25:49.742Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"iPhone 11\",\r\n    \"description\": \"An apple mobile which is nothing like apple\",\r\n    \"price\": 5490,\r\n    \"discountPercentage\": 12.96,\r\n    \"rating\": 4.69,\r\n    \"stock\": 94,\r\n    \"brand\": \"Apple\",\r\n    \"category\": \"smartphones\",\r\n    \"thumbnail\": \"https://cdn.dummyjson.com/product-images/1/thumbnail.jpg\",\r\n    \"images\": []\r\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "128b7730-1091-4717-be6f-308d9e051b99",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "placed order ",
+            "url": "http://localhost:8000/orders/",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-02-18T19:30:21.460Z",
+            "modified": "2024-02-18T19:30:21.460Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"productId\": \"25\",\r\n    \"quantity\": \"4\",\r\n    \"address\": \"kp hyd\",\r\n    \"contactNo\": \"1234567855699\",\r\n    \"status\": \"pending\",\r\n    \"totalcost\": 710\r\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "062bc7b4-8484-4dc4-a2c6-c33633f3606c",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "update order by order id",
+            "url": "http://localhost:8000/orders/update/10",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-02-18T19:32:36.293Z",
+            "modified": "2024-02-18T19:32:36.293Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"productId\": \"25\",\r\n    \"quantity\": \"4\",\r\n    \"address\": \"kp hyd\",\r\n    \"contactNo\": \"1234567855699\",\r\n    \"status\": \"delivered\",\r\n    \"totalcost\": 710\r\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f4a3769f-415a-4450-934e-a198cffd89c7",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "delete order by order id",
+            "url": "http://localhost:8000/orders/delete/7120681298",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-02-18T19:34:22.622Z",
+            "modified": "2024-02-18T19:34:22.622Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d2eb7347-ce3b-49f4-a4eb-f5235c413cd8",
+            "colId": "469b161c-3e4a-48a1-a38b-05834ec3a4ad",
+            "containerId": "",
+            "name": "display orders list",
+            "url": "http://localhost:8000/order",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-02-18T19:35:23.376Z",
+            "modified": "2024-02-18T19:35:23.376Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
